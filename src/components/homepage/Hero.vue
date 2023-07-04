@@ -39,7 +39,11 @@
       </div>
     </div>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-      <img class="w-full lg:w-3/4 lg:mt-8" src="img/hero-image.png" alt="" />
+      <img
+        class="w-full lg:w-3/4 lg:mt-8"
+        src="@/assets/img/hero-image.png"
+        alt=""
+      />
     </div>
   </div>
 </template>

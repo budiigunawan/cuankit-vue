@@ -1,7 +1,13 @@
-<script setup></script>
+<script setup>
+import Hero from "../components/homepage/Hero.vue";
+import Categories from "../components/homepage/Categories.vue";
+import Items from "../components/homepage/Items.vue";
+</script>
 
 <template>
   <main>
-    <h1>This is an home page</h1>
+    <Hero />
+    <Categories />
+    <Items />
   </main>
 </template>

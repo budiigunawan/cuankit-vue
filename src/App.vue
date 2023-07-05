@@ -1,14 +1,14 @@
 <script setup>
 import { RouterView } from "vue-router";
-import Navbar from "./components/Navbar/Navbar.vue";
+import Navbar from "./components/navbar/Navbar.vue";
 </script>
 
 <template>
-  <header>
-    <Navbar />
-  </header>
-
+  <Navbar />
   <RouterView />
 </template>
 
-<style></style>
+<style>
+@import "@/assets/styles/styles.css";
+@import "@/assets/styles/fonts.css";
+</style>

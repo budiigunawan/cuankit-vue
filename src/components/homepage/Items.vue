@@ -28,5 +28,3 @@ const itemList = ref([
     </div>
   </div>
 </template>
-
-<style></style>

@@ -35,4 +35,3 @@ defineProps({
     </div>
   </div>
 </template>
-<style></style>

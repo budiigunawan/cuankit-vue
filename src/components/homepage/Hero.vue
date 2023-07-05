@@ -1,4 +1,3 @@
-<script setup></script>
 <template>
   <div class="relative overflow-hidden bg-white">
     <div class="mx-auto max-w-7xl">
@@ -47,4 +46,3 @@
     </div>
   </div>
 </template>
-<style></style>

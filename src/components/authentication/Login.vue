@@ -1,6 +1,6 @@
 <script setup>
-import LoginForm from "./Login/LoginForm.vue";
-import BrandList from "./Login/BrandList.vue";
+import LoginForm from "./login/LoginForm.vue";
+import BrandList from "./login/BrandList.vue";
 </script>
 
 <template>

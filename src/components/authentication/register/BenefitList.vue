@@ -3,19 +3,19 @@ import { ref } from "vue";
 import BenefitCard from "./BenefitCard.vue";
 const benefits = ref([
   {
-    icon: "one",
+    icon: "stack",
     title: "Customizable",
     description:
       "Accelerate your work with our millions of ready-to-use design projects.",
   },
   {
-    icon: "two",
+    icon: "medal",
     title: "500 Fortune",
     description:
       "Accelerate your work with our millions of ready-to-use design projects.",
   },
   {
-    icon: "three",
+    icon: "book",
     title: "Documentation",
     description:
       "Accelerate your work with our millions of ready-to-use design projects.",

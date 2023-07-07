@@ -18,7 +18,7 @@ const categoryList = ref([
         v-for="(category, index) in categoryList"
         :key="index"
         :title="category.title"
-        :count="category.title"
+        :count="category.count"
         :img="category.img"
       />
     </div>

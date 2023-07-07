@@ -9,6 +9,6 @@ import Navbar from "./components/navbar/Navbar.vue";
 </template>
 
 <style>
-@import "@/assets/styles/styles.css";
+@import "@/assets/styles/index.css";
 @import "@/assets/styles/fonts.css";
 </style>

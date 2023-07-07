@@ -3,8 +3,5 @@ import Register from "../components/authentication/Register.vue";
 </script>
 
 <template>
-  <main>
-    <Register />
-  </main>
+  <Register />
 </template>
-<style></style>

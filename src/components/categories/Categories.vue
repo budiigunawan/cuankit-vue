@@ -30,6 +30,7 @@ onMounted(() => {
       <CategoryCard
         v-for="(category, index) in categoryList"
         :key="index"
+        :id="category.id"
         :title="category.name"
         :count="category.products_count"
         :img="category.thumbnails"

@@ -30,6 +30,7 @@ onMounted(() => {
       <ItemCard
         v-for="(item, index) in itemList"
         :key="index"
+        :id="item.id"
         :img="item.thumbnails"
         :title="item.name"
         :subtitle="item.subtitle"

@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 
 import axios from "axios";
 
-import CategoryCard from "./categories/CategoryCard.vue";
+import CategoryCard from "../homepage/categories/CategoryCard.vue";
 
 const baseUrl = import.meta.env.VITE_APP_BASEURL;
 const categoryList = ref([]);
@@ -24,7 +24,7 @@ onMounted(() => {
 
 <template>
   <div class="container px-4 mx-auto my-16 md:px-12">
-    <h2 class="mb-4 text-xl font-medium md:mb-0 md:text-lg">Top Categories</h2>
+    <h2 class="mb-4 text-xl font-medium md:mb-0 md:text-lg">All Categories</h2>
     <div class="flex flex-wrap -mx-1 lg:-mx-4">
       <!-- CARD LIST -->
       <CategoryCard

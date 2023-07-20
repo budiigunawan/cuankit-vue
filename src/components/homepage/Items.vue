@@ -1,16 +1,25 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+
+import axios from "axios";
+
 import ItemCard from "./items/ItemCard.vue";
 
-const itemList = ref([
-  { img: "items-1.jpg", title: "Mobile UI Kit", category: "Mobile UI Kit" },
-  {
-    img: "items-2.jpg",
-    title: "Online Doctor Consultation",
-    category: "Website UI Kit",
-  },
-  { img: "items-3.jpg", title: "Banking Crypto", category: "Mobile UI Kit" },
-]);
+const baseUrl = import.meta.env.VITE_APP_BASEURL;
+const itemList = ref([]);
+
+async function getItems() {
+  try {
+    const response = await axios.get(`${baseUrl}/api/products`);
+    itemList.value = response.data.data.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+onMounted(() => {
+  getItems();
+});
 </script>
 
 <template>
@@ -21,9 +30,9 @@ const itemList = ref([
       <ItemCard
         v-for="(item, index) in itemList"
         :key="index"
-        :img="item.img"
-        :title="item.title"
-        :category="item.category"
+        :img="item.thumbnails"
+        :title="item.name"
+        :subtitle="item.subtitle"
       />
     </div>
   </div>

@@ -1,12 +1,25 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+
+import axios from "axios";
+
 import CategoryCard from "./categories/CategoryCard.vue";
-const categoryList = ref([
-  { title: "Mobile UI Kit", count: 731, img: "categories-1.jpg" },
-  { title: "Fonts", count: 657, img: "categories-2.jpg" },
-  { title: "Icon Set", count: 83559, img: "categories-3.jpg" },
-  { title: "Website UI Kit", count: 4500, img: "categories-4.jpg" },
-]);
+
+const baseUrl = import.meta.env.VITE_APP_BASEURL;
+const categoryList = ref([]);
+
+async function getCategories() {
+  try {
+    const response = await axios.get(`${baseUrl}/api/categories`);
+    categoryList.value = response.data.data.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+onMounted(() => {
+  getCategories();
+});
 </script>
 
 <template>
@@ -17,9 +30,9 @@ const categoryList = ref([
       <CategoryCard
         v-for="(category, index) in categoryList"
         :key="index"
-        :title="category.title"
-        :count="category.count"
-        :img="category.img"
+        :title="category.name"
+        :count="category.products_count"
+        :img="category.thumbnails"
       />
     </div>
   </div>

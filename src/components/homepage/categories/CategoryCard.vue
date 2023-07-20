@@ -11,11 +11,7 @@ defineProps({
     <div class="overflow-hidden border border-gray-200 rounded-xl">
       <a href="details.html">
         <div class="m-4 overflow-hidden rounded-xl">
-          <img
-            alt="Placeholder"
-            class="block w-full h-auto"
-            :src="`src/assets/img/${img}`"
-          />
+          <img alt="Placeholder" class="block w-full h-auto" :src="img" />
         </div>
       </a>
 

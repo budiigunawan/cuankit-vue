@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, inject } from "vue";
 
-import CategoryCard from "../homepage/categories/CategoryCard";
+import CategoryCard from "../homepage/categories/CategoryCard.vue";
 
 const api = inject("$api");
 const categoryList = ref([]);
@@ -10,7 +10,7 @@ async function getCategories() {
   api.get(
     "categories",
     (resp) => {
-      categoryList.value = resp;
+      categoryList.value = resp.data;
     },
     (err) => {
       console.error(err);

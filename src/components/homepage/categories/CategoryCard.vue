@@ -5,7 +5,7 @@ defineProps({
   title: String,
   count: Number,
   img: String,
-  id: String,
+  id: Number,
 });
 </script>
 

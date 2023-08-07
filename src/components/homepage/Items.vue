@@ -1,20 +1,21 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, inject } from "vue";
 
-import axios from "axios";
+import ItemCard from "./items/itemcard.vue";
 
-import ItemCard from "./items/ItemCard.vue";
-
-const baseUrl = import.meta.env.VITE_APP_BASEURL;
+const api = inject("$api");
 const itemList = ref([]);
 
 async function getItems() {
-  try {
-    const response = await axios.get(`${baseUrl}/api/products`);
-    itemList.value = response.data.data.data;
-  } catch (error) {
-    console.error(error);
-  }
+  api.get(
+    "products",
+    (resp) => {
+      itemList.value = resp.data;
+    },
+    (err) => {
+      console.error(err);
+    }
+  );
 }
 
 onMounted(() => {

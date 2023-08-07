@@ -1,25 +1,24 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, inject } from "vue";
 import { useRoute } from "vue-router";
 
-import axios from "axios";
+import ItemCard from "../homepage/items/itemcard.vue";
 
-import ItemCard from "../homepage/items/ItemCard.vue";
-
-const baseUrl = import.meta.env.VITE_APP_BASEURL;
+const api = inject("$api");
 const route = useRoute();
 
 const categoryData = ref({});
 
 async function getCategoryData() {
-  try {
-    const response = await axios.get(
-      `${baseUrl}/api/categories?id=${route.params.id}`
-    );
-    categoryData.value = response.data.data;
-  } catch (error) {
-    console.error(error);
-  }
+  api.get(
+    `categories?id=${route.params.id}`,
+    (resp) => {
+      categoryData.value = resp;
+    },
+    (err) => {
+      console.error(err);
+    }
+  );
 }
 
 onMounted(() => {

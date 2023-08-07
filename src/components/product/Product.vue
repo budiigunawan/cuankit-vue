@@ -37,7 +37,7 @@ onMounted(() => {
         :thumbnails="productData?.thumbnails"
         :description="productData?.description"
       />
-      <ProductAside />
+      <ProductAside :features="productData?.features" />
     </div>
   </div>
 </template>

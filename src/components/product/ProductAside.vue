@@ -1,5 +1,19 @@
 <script setup>
+import { ref, watch } from "vue";
 import { RouterLink } from "vue-router";
+
+const featureList = ref([]);
+
+const props = defineProps({
+  features: String,
+});
+
+watch(
+  () => props.features,
+  (defaultFeatures) => {
+    featureList.value = defaultFeatures.split(",");
+  }
+);
 </script>
 
 <template>
@@ -9,7 +23,7 @@ import { RouterLink } from "vue-router";
         <div class="mb-4">
           <div class="flex mb-2">
             <div>
-              <img src="src/assets/img/icon-figma.png" alt="" class="w-16" />
+              <img src="@/assets/img/icon-figma.png" alt="" class="w-16" />
             </div>
             <div class="block mt-1 ml-4">
               <h3 class="font-semibold text-md">Figma</h3>
@@ -20,7 +34,7 @@ import { RouterLink } from "vue-router";
         <div class="mb-4">
           <div class="flex mb-2">
             <div>
-              <img src="src/assets/img/icon-sketch.png" alt="" class="w-16" />
+              <img src="@/assets/img/icon-sketch.png" alt="" class="w-16" />
             </div>
             <div class="block mt-1 ml-4">
               <h3 class="font-semibold text-md">Sketch</h3>
@@ -31,34 +45,14 @@ import { RouterLink } from "vue-router";
         <div>
           <h1 class="mt-5 mb-3 font-semibold text-md">Great Features</h1>
           <ul class="mb-6 text-gray-500">
-            <li class="mb-2">
-              Customizable layers
+            <li
+              class="mb-2"
+              v-for="(feature, index) in featureList"
+              :key="index"
+            >
+              {{ feature }}
               <img
-                src="src/assets/img/icon-check.png"
-                class="float-right w-5 mt-1"
-                alt=""
-              />
-            </li>
-            <li class="mb-2">
-              Documentation
-              <img
-                src="src/assets/img/icon-check.png"
-                class="float-right w-5 mt-1"
-                alt=""
-              />
-            </li>
-            <li class="mb-2">
-              Icon set design
-              <img
-                src="src/assets/img/icon-check.png"
-                class="float-right w-5 mt-1"
-                alt=""
-              />
-            </li>
-            <li class="mb-2">
-              Pre-built UI screens
-              <img
-                src="src/assets/img/icon-check.png"
+                src="@/assets/img/icon-check.png"
                 class="float-right w-5 mt-1"
                 alt=""
               />

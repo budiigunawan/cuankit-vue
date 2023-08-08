@@ -37,7 +37,11 @@ onMounted(() => {
         :thumbnails="productData?.thumbnails"
         :description="productData?.description"
       />
-      <ProductAside :features="productData?.features" />
+      <ProductAside
+        :features="productData?.features"
+        :isFigma="productData?.is_figma"
+        :isSketch="productData?.is_sketch"
+      />
     </div>
   </div>
 </template>

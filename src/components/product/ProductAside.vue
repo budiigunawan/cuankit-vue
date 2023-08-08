@@ -1,26 +1,21 @@
 <script setup>
-import { ref, watch } from "vue";
+import { computed } from "vue";
 import { RouterLink } from "vue-router";
-
-const featureList = ref([]);
 
 const props = defineProps({
   features: String,
+  isFigma: Number,
+  isSketch: Number,
 });
 
-watch(
-  () => props.features,
-  (defaultFeatures) => {
-    featureList.value = defaultFeatures.split(",");
-  }
-);
+const featureList = computed(() => props.features?.split(","));
 </script>
 
 <template>
   <aside class="w-full px-4 sm:w-1/3 md:w-1/3">
     <div class="sticky top-0 w-full pt-4 md:mt-24">
       <div class="p-6 border rounded-2xl">
-        <div class="mb-4">
+        <div class="mb-4" v-if="isFigma">
           <div class="flex mb-2">
             <div>
               <img src="@/assets/img/icon-figma.png" alt="" class="w-16" />
@@ -31,7 +26,7 @@ watch(
             </div>
           </div>
         </div>
-        <div class="mb-4">
+        <div class="mb-4" v-if="isSketch">
           <div class="flex mb-2">
             <div>
               <img src="@/assets/img/icon-sketch.png" alt="" class="w-16" />

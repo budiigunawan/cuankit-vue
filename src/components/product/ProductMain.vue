@@ -1,6 +1,14 @@
 <script setup>
 import ProductDetails from "./product-main/ProductDetails.vue";
 import ProductGallery from "./product-main/ProductGallery.vue";
+
+defineProps({
+  name: String,
+  subtitle: String,
+  galleries: Array,
+  thumbnails: String,
+  description: String,
+});
 </script>
 
 <template>
@@ -8,11 +16,11 @@ import ProductGallery from "./product-main/ProductGallery.vue";
     <h1
       class="mb-2 text-3xl font-bold leading-normal tracking-tight text-gray-900 sm:text-4xl md:text-4xl"
     >
-      RoboCrypto UI Kit
+      {{ name }}
     </h1>
-    <p class="text-gray-500">Build your next coin startup</p>
+    <p class="text-gray-500">{{ subtitle }}</p>
 
-    <ProductGallery />
-    <ProductDetails />
+    <ProductGallery :galleries="galleries" :thumbnails="thumbnails" />
+    <ProductDetails :description="description" />
   </div>
 </template>

@@ -1,18 +1,23 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
-const selectedImage = ref("src/assets/img/gallery-1.png");
-
-const imageUrlList = ref([
-  "src/assets/img/gallery-1.png",
-  "src/assets/img/gallery-2.png",
-  "src/assets/img/gallery-4.png",
-  "src/assets/img/gallery-5.png",
-]);
+const selectedImage = ref();
 
 function handleSelectImage(imageName) {
   selectedImage.value = imageName;
 }
+
+const props = defineProps({
+  galleries: Array,
+  thumbnails: String,
+});
+
+watch(
+  () => props.thumbnails,
+  (defaultThumbnails) => {
+    selectedImage.value = defaultThumbnails;
+  }
+);
 </script>
 
 <template>
@@ -20,15 +25,15 @@ function handleSelectImage(imageName) {
     <img :src="selectedImage" alt="" class="w-full mt-6 rounded-2xl" />
     <div class="grid grid-cols-4 gap-4 mt-4">
       <div
-        v-for="(imageUrl, index) in imageUrlList"
+        v-for="(gallery, index) in galleries"
         :key="index"
-        @click="handleSelectImage(imageUrl)"
+        @click="handleSelectImage(gallery.url)"
         class="overflow-hidden cursor-pointer rounded-2xl"
         :class="{
-          'ring-2 ring-indigo-500': selectedImage === imageUrl,
+          'ring-2 ring-indigo-500': selectedImage === gallery.url,
         }"
       >
-        <img :src="imageUrl" class="w-full" alt="" />
+        <img :src="gallery.url" class="w-full" alt="" />
       </div>
     </div>
   </section>

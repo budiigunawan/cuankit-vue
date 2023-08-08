@@ -1,15 +1,24 @@
 <script setup>
+import { computed } from "vue";
 import { RouterLink } from "vue-router";
+
+const props = defineProps({
+  features: String,
+  isFigma: Number,
+  isSketch: Number,
+});
+
+const featureList = computed(() => props.features?.split(","));
 </script>
 
 <template>
   <aside class="w-full px-4 sm:w-1/3 md:w-1/3">
     <div class="sticky top-0 w-full pt-4 md:mt-24">
       <div class="p-6 border rounded-2xl">
-        <div class="mb-4">
+        <div class="mb-4" v-if="isFigma">
           <div class="flex mb-2">
             <div>
-              <img src="src/assets/img/icon-figma.png" alt="" class="w-16" />
+              <img src="@/assets/img/icon-figma.png" alt="" class="w-16" />
             </div>
             <div class="block mt-1 ml-4">
               <h3 class="font-semibold text-md">Figma</h3>
@@ -17,10 +26,10 @@ import { RouterLink } from "vue-router";
             </div>
           </div>
         </div>
-        <div class="mb-4">
+        <div class="mb-4" v-if="isSketch">
           <div class="flex mb-2">
             <div>
-              <img src="src/assets/img/icon-sketch.png" alt="" class="w-16" />
+              <img src="@/assets/img/icon-sketch.png" alt="" class="w-16" />
             </div>
             <div class="block mt-1 ml-4">
               <h3 class="font-semibold text-md">Sketch</h3>
@@ -31,34 +40,14 @@ import { RouterLink } from "vue-router";
         <div>
           <h1 class="mt-5 mb-3 font-semibold text-md">Great Features</h1>
           <ul class="mb-6 text-gray-500">
-            <li class="mb-2">
-              Customizable layers
+            <li
+              class="mb-2"
+              v-for="(feature, index) in featureList"
+              :key="index"
+            >
+              {{ feature }}
               <img
-                src="src/assets/img/icon-check.png"
-                class="float-right w-5 mt-1"
-                alt=""
-              />
-            </li>
-            <li class="mb-2">
-              Documentation
-              <img
-                src="src/assets/img/icon-check.png"
-                class="float-right w-5 mt-1"
-                alt=""
-              />
-            </li>
-            <li class="mb-2">
-              Icon set design
-              <img
-                src="src/assets/img/icon-check.png"
-                class="float-right w-5 mt-1"
-                alt=""
-              />
-            </li>
-            <li class="mb-2">
-              Pre-built UI screens
-              <img
-                src="src/assets/img/icon-check.png"
+                src="@/assets/img/icon-check.png"
                 class="float-right w-5 mt-1"
                 alt=""
               />

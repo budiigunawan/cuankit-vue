@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { ref, inject } from "vue";
 import { RouterLink } from "vue-router";
+
+const api = inject("$api");
 
 const form = ref({
   email: "",
@@ -8,7 +10,15 @@ const form = ref({
 });
 
 function handleSubmit() {
-  console.log(form.value, "payload login");
+  api.post(
+    "login",
+    { email: form.value.email, password: form.value.password },
+    (resp) => {
+      const token = resp.data.access_token;
+      const token_type = resp.data.token_type;
+      console.log(token, token_type, "iki resp");
+    }
+  );
 }
 </script>
 

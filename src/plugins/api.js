@@ -17,13 +17,8 @@ export default {
       const queryParams = obj.queryParams || {};
 
       try {
-        const response = await axios.post(urlEndpoint, body, {
+        const response = await axios.post(`${baseUrl}/api/${urlEndpoint}`, body, {
           ...queryParams,
-          headers: {
-            "Content-Type": "application/json",
-            prefer: "return=representation",
-            "MSCRM.SuppressDuplicateDetection": false,
-          },
         });
         cbSuccess(response);
       } catch (e) {

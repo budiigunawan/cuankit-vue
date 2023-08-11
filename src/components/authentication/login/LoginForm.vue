@@ -1,6 +1,17 @@
 <script setup>
-import { ref } from "vue";
-import { RouterLink } from "vue-router";
+import { ref, inject } from "vue";
+import { RouterLink, useRouter } from "vue-router";
+import { useAuthStore } from "../../../stores/auth";
+import { useUserStore } from "../../../stores/user";
+
+const api = inject("$api");
+const router = useRouter();
+
+const authStore = useAuthStore();
+const userStore = useUserStore();
+
+const { setAuthData } = authStore;
+const { fetchUser } = userStore;
 
 const form = ref({
   email: "",
@@ -8,7 +19,18 @@ const form = ref({
 });
 
 function handleSubmit() {
-  console.log(form.value, "payload login");
+  const { email, password } = form.value;
+
+  api.post("login", { email, password }, async (resp) => {
+    const accessToken = resp.data.data.access_token;
+    const tokenType = resp.data.data.token_type;
+
+    if (accessToken && tokenType) {
+      setAuthData(tokenType, accessToken);
+      const isUserFetched = await fetchUser(tokenType, accessToken);
+      if (isUserFetched) router.push({ name: "home" });
+    }
+  });
 }
 </script>
 

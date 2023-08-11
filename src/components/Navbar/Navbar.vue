@@ -1,8 +1,15 @@
 <script setup>
 import Logo from "./Logo.vue";
 import AuthButton from "./AuthButton.vue";
-// import UserInfo from "./UserInfo.vue";
+import UserInfo from "./UserInfo.vue";
 import NavigationLinks from "./NavigationLinks.vue";
+
+import { storeToRefs } from "pinia";
+import { useUserStore } from "../../stores/user";
+
+const userStore = useUserStore();
+// const { isLoggedIn, user } = userStore;
+const { isLoggedIn, user } = storeToRefs(userStore);
 </script>
 
 <template>
@@ -13,8 +20,9 @@ import NavigationLinks from "./NavigationLinks.vue";
       class="container flex flex-wrap items-center justify-between mx-auto my-2"
     >
       <Logo />
-      <AuthButton />
       <NavigationLinks />
+      <AuthButton v-if="!isLoggedIn" />
+      <UserInfo :user="user" v-else />
     </div>
   </nav>
 </template>

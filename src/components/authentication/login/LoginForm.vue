@@ -1,8 +1,17 @@
 <script setup>
 import { ref, inject } from "vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+import { useAuthStore } from "../../../stores/auth";
+import { useUserStore } from "../../../stores/user";
 
 const api = inject("$api");
+const router = useRouter();
+
+const authStore = useAuthStore();
+const userStore = useUserStore();
+
+const { setAuthData } = authStore;
+const { fetchUser } = userStore;
 
 const form = ref({
   email: "",
@@ -10,15 +19,18 @@ const form = ref({
 });
 
 function handleSubmit() {
-  api.post(
-    "login",
-    { email: form.value.email, password: form.value.password },
-    (resp) => {
-      const token = resp.data.access_token;
-      const token_type = resp.data.token_type;
-      console.log(token, token_type, "iki resp");
+  const { email, password } = form.value;
+
+  api.post("login", { email, password }, async (resp) => {
+    const accessToken = resp.data.data.access_token;
+    const tokenType = resp.data.data.token_type;
+
+    if (accessToken && tokenType) {
+      setAuthData(tokenType, accessToken);
+      const isUserFetched = await fetchUser(tokenType, accessToken);
+      if (isUserFetched) router.push({ name: "home" });
     }
-  );
+  });
 }
 </script>
 

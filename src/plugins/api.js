@@ -11,20 +11,15 @@ export default {
       cbFail = (e) => {
         console.error(e);
       },
-      cbFinal = () => {},
       obj = {}
     ) => {
       const queryParams = obj.queryParams || {};
 
       try {
-        const response = await axios.post(`${baseUrl}/api/${urlEndpoint}`, body, {
-          ...queryParams,
-        });
+        const response = await axios.post(`${baseUrl}/api/${urlEndpoint}`, body, obj);
         cbSuccess(response);
       } catch (e) {
         cbFail(e);
-      } finally {
-        cbFinal();
       }
     };
 

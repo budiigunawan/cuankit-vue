@@ -8,7 +8,6 @@ import { storeToRefs } from "pinia";
 import { useUserStore } from "../../stores/user";
 
 const userStore = useUserStore();
-// const { isLoggedIn, user } = userStore;
 const { isLoggedIn, user } = storeToRefs(userStore);
 </script>
 

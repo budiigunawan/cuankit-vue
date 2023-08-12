@@ -41,6 +41,7 @@ onMounted(() => {
         :features="productData?.features"
         :isFigma="productData?.is_figma"
         :isSketch="productData?.is_sketch"
+        :file="productData?.file"
       />
     </div>
   </div>

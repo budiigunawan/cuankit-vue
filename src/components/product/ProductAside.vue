@@ -2,10 +2,17 @@
 import { computed } from "vue";
 import { RouterLink } from "vue-router";
 
+import { storeToRefs } from "pinia";
+import { useUserStore } from "../../stores/user";
+
+const userStore = useUserStore();
+const { user } = storeToRefs(userStore);
+
 const props = defineProps({
   features: String,
   isFigma: Number,
   isSketch: Number,
+  file: String,
 });
 
 const featureList = computed(() => props.features?.split(","));
@@ -54,12 +61,22 @@ const featureList = computed(() => props.features?.split(","));
             </li>
           </ul>
         </div>
-        <RouterLink
-          to="/pricing"
-          class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
-        >
-          Download Now
-        </RouterLink>
+        <template v-if="user?.subscription.length">
+          <a
+            :href="file"
+            class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
+          >
+            Download Now
+          </a>
+        </template>
+        <template v-else>
+          <RouterLink
+            to="/pricing"
+            class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
+          >
+            Subscribe Now
+          </RouterLink>
+        </template>
       </div>
     </div>
   </aside>

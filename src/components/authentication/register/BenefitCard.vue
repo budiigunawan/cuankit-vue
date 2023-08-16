@@ -1,7 +1,7 @@
 <script setup>
 import Icon from "./icons/Icon.vue";
 
-const props = defineProps({
+defineProps({
   icon: String,
   title: String,
   description: String,

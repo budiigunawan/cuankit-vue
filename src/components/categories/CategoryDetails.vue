@@ -2,7 +2,7 @@
 import { ref, onMounted, inject } from "vue";
 import { useRoute } from "vue-router";
 
-import ItemCard from "../homepage/items/itemcard.vue";
+import ItemCard from "../homepage/items/ItemCard.vue";
 
 const api = inject("$api");
 const route = useRoute();

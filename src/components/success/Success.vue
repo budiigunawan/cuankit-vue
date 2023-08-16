@@ -10,7 +10,7 @@ import { RouterLink } from "vue-router";
       >
         <div class="w-full p-5 mx-auto sm:max-w-md">
           <img
-            src="src/assets/img/success-illustration.svg"
+            src="@/assets/img/success-illustration.svg"
             alt=""
             class="mb-10 w-4xl"
           />

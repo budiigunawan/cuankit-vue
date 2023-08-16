@@ -58,7 +58,7 @@ function handleCheckout(price) {
       <ul v-if="plan.features.length" class="mb-6 text-gray-700">
         <li class="mb-3" v-for="(feature, index) in plan.features" :key="index">
           <img
-            src="src/assets/img/icon-check.png"
+            src="@/assets/img/icon-check.png"
             class="float-left w-6 mr-2"
             alt=""
           />

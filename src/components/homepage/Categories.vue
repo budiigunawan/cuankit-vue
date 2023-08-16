@@ -14,7 +14,7 @@ async function getCategories() {
     },
     (err) => {
       console.error(err);
-    }
+    },
   );
 }
 
@@ -30,8 +30,8 @@ onMounted(() => {
       <!-- CARD LIST -->
       <CategoryCard
         v-for="(category, index) in categoryList"
-        :key="index"
         :id="category.id"
+        :key="index"
         :title="category.name"
         :count="category.products_count"
         :img="category.thumbnails"

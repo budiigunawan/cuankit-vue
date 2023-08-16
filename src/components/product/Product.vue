@@ -18,7 +18,7 @@ async function getProductData() {
     },
     (err) => {
       console.error(err);
-    }
+    },
   );
 }
 
@@ -39,8 +39,8 @@ onMounted(() => {
       />
       <ProductAside
         :features="productData?.features"
-        :isFigma="productData?.is_figma"
-        :isSketch="productData?.is_sketch"
+        :is-figma="productData?.is_figma"
+        :is-sketch="productData?.is_sketch"
         :file="productData?.file"
       />
     </div>

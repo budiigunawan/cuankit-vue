@@ -41,7 +41,7 @@ function handleCheckout(price) {
       headers: {
         Authorization: `${tokenType.value} ${accessToken.value}`,
       },
-    }
+    },
   );
 }
 </script>
@@ -56,7 +56,7 @@ function handleCheckout(price) {
       <h2 class="text-lg font-semibold mt-7">{{ plan.title }}</h2>
       <p class="mb-6 text-gray-500">{{ plan.subTitle }}</p>
       <ul v-if="plan.features.length" class="mb-6 text-gray-700">
-        <li class="mb-3" v-for="(feature, index) in plan.features" :key="index">
+        <li v-for="(feature, index) in plan.features" :key="index" class="mb-3">
           <img
             src="@/assets/img/icon-check.png"
             class="float-left w-6 mr-2"
@@ -67,8 +67,8 @@ function handleCheckout(price) {
       </ul>
       <button
         type="button"
-        @click="handleCheckout(plan.price)"
         class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-black bg-gray-200 border border-transparent rounded-full hover:bg-gray-300 md:py-2 md:text-md md:px-10 hover:shadow"
+        @click="handleCheckout(plan.price)"
       >
         Checkout Now
       </button>

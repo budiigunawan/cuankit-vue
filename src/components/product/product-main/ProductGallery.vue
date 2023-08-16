@@ -16,7 +16,7 @@ watch(
   () => props.thumbnails,
   (defaultThumbnails) => {
     selectedImage.value = defaultThumbnails;
-  }
+  },
 );
 </script>
 
@@ -27,11 +27,11 @@ watch(
       <div
         v-for="(gallery, index) in galleries"
         :key="index"
-        @click="handleSelectImage(gallery.url)"
         class="overflow-hidden cursor-pointer rounded-2xl"
         :class="{
           'ring-2 ring-indigo-500': selectedImage === gallery.url,
         }"
+        @click="handleSelectImage(gallery.url)"
       >
         <img :src="gallery.url" class="w-full" alt="" />
       </div>

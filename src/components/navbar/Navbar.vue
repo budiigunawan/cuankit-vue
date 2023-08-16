@@ -21,7 +21,7 @@ const { isLoggedIn, user } = storeToRefs(userStore);
       <Logo />
       <NavigationLinks />
       <AuthButton v-if="!isLoggedIn" />
-      <UserInfo :user="user" v-else />
+      <UserInfo v-else :user="user" />
     </div>
   </nav>
 </template>

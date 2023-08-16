@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, inject } from "vue";
 
-import ItemCard from "./items/itemcard.vue";
+import ItemCard from "./items/ItemCard.vue";
 
 const api = inject("$api");
 const itemList = ref([]);
@@ -14,7 +14,7 @@ async function getItems() {
     },
     (err) => {
       console.error(err);
-    }
+    },
   );
 }
 
@@ -30,8 +30,8 @@ onMounted(() => {
       <!-- CARD LIST -->
       <ItemCard
         v-for="(item, index) in itemList"
-        :key="index"
         :id="item.id"
+        :key="index"
         :img="item.thumbnails"
         :title="item.name"
         :subtitle="item.subtitle"

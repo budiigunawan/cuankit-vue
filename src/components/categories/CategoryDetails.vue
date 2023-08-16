@@ -17,7 +17,7 @@ async function getCategoryData() {
     },
     (err) => {
       console.error(err);
-    }
+    },
   );
 }
 
@@ -39,8 +39,8 @@ onMounted(() => {
       <!-- CARD LIST -->
       <ItemCard
         v-for="(item, index) in categoryData.products"
-        :key="index"
         :id="item.id"
+        :key="index"
         :img="item.thumbnails"
         :title="item.name"
         :subtitle="item.subtitle"

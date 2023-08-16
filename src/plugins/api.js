@@ -3,7 +3,7 @@ import axios from "axios";
 const baseUrl = import.meta.env.VITE_APP_BASEURL;
 
 export default {
-  install(app, options) {
+  install(app) {
     const postRequest = async (
       urlEndpoint,
       body,
@@ -11,12 +11,14 @@ export default {
       cbFail = (e) => {
         console.error(e);
       },
-      obj = {}
+      obj = {},
     ) => {
-      const queryParams = obj.queryParams || {};
-
       try {
-        const response = await axios.post(`${baseUrl}/api/${urlEndpoint}`, body, obj);
+        const response = await axios.post(
+          `${baseUrl}/api/${urlEndpoint}`,
+          body,
+          obj,
+        );
         cbSuccess(response);
       } catch (e) {
         cbFail(e);
@@ -30,12 +32,14 @@ export default {
         console.error(e);
       },
       cbFinal = () => {},
-      obj = {}
+      obj = {},
     ) => {
       const body = obj.body || {};
 
       try {
-        const response = await axios.get(`${baseUrl}/api/${urlEndpoint}`, { ...body });
+        const response = await axios.get(`${baseUrl}/api/${urlEndpoint}`, {
+          ...body,
+        });
         cbSuccess(response.data.data);
       } catch (e) {
         cbFail(e);
@@ -44,9 +48,9 @@ export default {
       }
     };
 
-    app.provide('$api', {
+    app.provide("$api", {
       post: postRequest,
       get: getRequest,
-    })
+    });
   },
 };

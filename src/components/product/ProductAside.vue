@@ -22,7 +22,7 @@ const featureList = computed(() => props.features?.split(","));
   <aside class="w-full px-4 sm:w-1/3 md:w-1/3">
     <div class="sticky top-0 w-full pt-4 md:mt-24">
       <div class="p-6 border rounded-2xl">
-        <div class="mb-4" v-if="isFigma">
+        <div v-if="isFigma" class="mb-4">
           <div class="flex mb-2">
             <div>
               <img src="@/assets/img/icon-figma.png" alt="" class="w-16" />
@@ -33,7 +33,7 @@ const featureList = computed(() => props.features?.split(","));
             </div>
           </div>
         </div>
-        <div class="mb-4" v-if="isSketch">
+        <div v-if="isSketch" class="mb-4">
           <div class="flex mb-2">
             <div>
               <img src="@/assets/img/icon-sketch.png" alt="" class="w-16" />
@@ -48,9 +48,9 @@ const featureList = computed(() => props.features?.split(","));
           <h1 class="mt-5 mb-3 font-semibold text-md">Great Features</h1>
           <ul class="mb-6 text-gray-500">
             <li
-              class="mb-2"
               v-for="(feature, index) in featureList"
               :key="index"
+              class="mb-2"
             >
               {{ feature }}
               <img

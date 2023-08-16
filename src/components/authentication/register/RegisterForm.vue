@@ -39,7 +39,7 @@ function handleSubmit() {
         const isUserFetched = await fetchUser(tokenType, token);
         if (isUserFetched) router.push({ name: "home" });
       }
-    }
+    },
   );
 }
 </script>
@@ -50,33 +50,33 @@ function handleSubmit() {
       <div class="mb-4">
         <label class="block mb-1" for="name">Name</label>
         <input
-          placeholder="Type your full name"
           id="name"
+          v-model="form.name"
+          placeholder="Type your full name"
           type="text"
           name="name"
-          v-model="form.name"
           class="block w-full py-3 mt-2 border border-gray-300 rounded-full shadow-sm px-7 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-gray-100"
         />
       </div>
       <div class="mb-4">
         <label class="block mb-1" for="email">Email Address</label>
         <input
-          placeholder="Type your email"
           id="email"
+          v-model="form.email"
+          placeholder="Type your email"
           type="email"
           name="email"
-          v-model="form.email"
           class="block w-full py-3 mt-2 border border-gray-300 rounded-full shadow-sm px-7 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-gray-100"
         />
       </div>
       <div class="mb-4">
         <label class="block mb-1" for="password">Password</label>
         <input
-          placeholder="Type your password"
           id="password"
+          v-model="form.password"
+          placeholder="Type your password"
           type="password"
           name="password"
-          v-model="form.password"
           class="block w-full py-3 mt-2 border border-gray-300 rounded-full shadow-sm px-7 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-gray-100"
         />
       </div>
